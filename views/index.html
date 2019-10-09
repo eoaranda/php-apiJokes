@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Random Jokes Service</title>
+    <meta name="description" content="The Best Jokes around ">
+    <meta name="author" content="Edgar Aranda">
+    <link href="https://fonts.googleapis.com/css?family=Coming+Soon&display=swap" rel="stylesheet">
+    <style>
+        body,
+        html {
+            background-color: #A86FFF
+        }
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+        #joke-on-you {
+            font-family: 'Coming Soon', cursive;
+            font-size: 3em;
+            width: 80%;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centered">
+
+        <div id="joke-on-you">
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+    (function () {
+        getJokes();
+        $('#joke-on-you').click(function () {
+            getJokes();
+        })
+    }())
+
+    function getJokes() {
+        $.get("apiJokes/api/jokes?count=1", function (data) {
+            $("#joke-on-you").html(data);
+        });
+    }
+</script>
+</html>
